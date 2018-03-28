@@ -3,7 +3,7 @@ current implementing, updating till summer for personal reasons
 
 
 ## first one step project:
-## design simple dialog and front-end web:
+design simple dialog and front-end web:
 with simple lambda function
 
 ### Function
