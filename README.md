@@ -37,21 +37,21 @@ design a Dining Concierge chatbot using Amazon Lex
 	a.	Create a new bot using the Amazon Lex service. Read up the documentation on all things Lex, for more information: https://docs.aws.amazon.com/lex/latest/dg/getting-started.html  
 	b.	Create a Lambda function (LF1) and use it as a code hook for Lex, which essentially entails the invocation of your Lambda before Lex responds to any of your requests -- this gives you the chance to manipulate and validate parameters as well as format the bot’s responses. More documentation on Lambda code hooks at the following link: https://docs.aws.amazon.com/lex/latest/dg/using-lambda.html  
 	c.	Bot Requirements:  
-		&emspi.	Implement at least the following three intents:  
-		&emsp ●	GreetingIntent  
-		&emsp ●	ThankYouIntent  
-		&emsp ●	DiningSuggestionsIntent  
-		&emspii.The implementation of an intent entails its setup in Amazon Lex as well as handling its response in the Lambda function code hook.  
+		&emsp;i.	Implement at least the following three intents:  
+		&emsp; ●	GreetingIntent  
+		&emsp; ●	ThankYouIntent  
+		&emsp; ●	DiningSuggestionsIntent  
+		&emsp;ii.The implementation of an intent entails its setup in Amazon Lex as well as handling its response in the Lambda function code hook.  
 		●	Example: for the GreetingIntent you need to   
-		&emsp	1. create the intent in Lex,  
-		&emsp	2. train and test the intent in the Lex console,   
-		&emsp	3. implement the handler for the GreetingIntent in the Lambda code hook, such that when you receive a request for the GreetingIntent you compose a response such as “Hi there, how can I help?”  
-		iii.	For the DiningSuggestionsIntent, you need to collect at least the following pieces of information from the user, through conversation:  
-		●	Location  
-		●	Cuisine  
-		●	Dining Time  
-		●	Number of people  
-		●	Phone number  
+		&emsp;	1. create the intent in Lex,  
+		&emsp;	2. train and test the intent in the Lex console,   
+		&emsp;	3. implement the handler for the GreetingIntent in the Lambda code hook, such that when you receive a request for the GreetingIntent you compose a response such as “Hi there, how can I help?”  
+		&emsp;iii.	For the DiningSuggestionsIntent, you need to collect at least the following pieces of information from the user, through conversation:  
+		&emsp;●	Location  
+		&emsp;●	Cuisine  
+		&emsp;●	Dining Time  
+		&emsp;●	Number of people  
+		&emsp;●	Phone number  
 2.	Build a suggestions module, that is decoupled from the Lex chatbot.  
 	a.	During the fulfillment step (https://docs.aws.amazon.com/lex/latest/dg/API_FulfillmentActivity.html) of the DiningSuggestionsIntent, push the information collected from the user (location, cuisine, etc.) to an SQS queue. More on SQS queues here: https://aws.amazon.com/sqs/  
 	b.	Create a new Lambda function (LF2) that acts as a queue worker. Whenever it is invoked it   
