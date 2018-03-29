@@ -38,9 +38,9 @@ design a Dining Concierge chatbot using Amazon Lex
 	b.	Create a Lambda function (LF1) and use it as a code hook for Lex, which essentially entails the invocation of your Lambda before Lex responds to any of your requests -- this gives you the chance to manipulate and validate parameters as well as format the bot’s responses. More documentation on Lambda code hooks at the following link: https://docs.aws.amazon.com/lex/latest/dg/using-lambda.html  
 	c.	Bot Requirements:  
 		i.	Implement at least the following three intents:  
-		> ●	GreetingIntent  
-		> ●	ThankYouIntent  
-		> ●	DiningSuggestionsIntent  
+		>- ●	GreetingIntent  
+		>- ●	ThankYouIntent  
+		>- ●	DiningSuggestionsIntent  
 		ii.The implementation of an intent entails its setup in Amazon Lex as well as handling its response in the Lambda function code hook.  
 		●	Example: for the GreetingIntent you need to   
 			1. create the intent in Lex,  
