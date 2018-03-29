@@ -49,13 +49,21 @@ with simple lambda function
 		●	Number of people
 		●	Phone number
 2.	Build a suggestions module, that is decoupled from the Lex chatbot.
-	•	a.	During the fulfillment step (https://docs.aws.amazon.com/lex/latest/dg/API_FulfillmentActivity.html) of the DiningSuggestionsIntent, push the information collected from the user (location, cuisine, etc.) to an SQS queue. More on SQS queues here: https://aws.amazon.com/sqs/
-	•	b.	Create a new Lambda function (LF2) that acts as a queue worker. Whenever it is invoked it 1. pulls a message from the SQS queue, 2. gets restaurant suggestions based on its parameters using one or more APIs such as Yelp or Google Places, 3. formats them and 4. sends them over text message to the phone number included in the SQS message, using SNS (https://docs.aws.amazon.com/sns/latest/dg/SMSMessages.html).
-	•	c.	Set up a CloudWatch event trigger that runs every minute and invokes the Lambda function as a result: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html. This automates the queue worker Lambda to poll and process suggestion requests on its own.
+	a.	During the fulfillment step (https://docs.aws.amazon.com/lex/latest/dg/API_FulfillmentActivity.html) of the DiningSuggestionsIntent, push the information collected from the user (location, cuisine, etc.) to an SQS queue. More on SQS queues here: https://aws.amazon.com/sqs/
+	b.	Create a new Lambda function (LF2) that acts as a queue worker. Whenever it is invoked it 
+		1. pulls a message from the SQS queue,
+		2. gets restaurant suggestions based on its parameters using one or more APIs such as Yelp or Google Places, 
+		3. formats them and 
+		4. sends them over text message to the phone number included in the SQS message, using SNS (https://docs.aws.amazon.com/sns/latest/dg/SMSMessages.html).
+	c.	Set up a CloudWatch event trigger that runs every minute and invokes the Lambda function as a result: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html. This automates the queue worker Lambda to poll and process suggestion requests on its own.
 3.	Integrate the Lex chatbot into your chat API from Assignment 1.
-	•	a.	Use the AWS SDK to call your Lex chatbot from the Lambda function that you created in Assignment 1.
-	•	b.	When the API receives a request, you should 1. extract the text message from the API request, 2. send it to your Lex chatbot, 3. wait for the response, 4. send back the response from Lex as the API response.
-	•	c.	If you did everything correctly, you should be able to leverage the frontend from Assignment 1, with no additional modifications.
+	a.	Use the AWS SDK to call your Lex chatbot from the Lambda function that you created in Assignment 1.
+	b.	When the API receives a request, you should 
+		1. extract the text message from the API request,
+		2. send it to your Lex chatbot, 
+		3. wait for the response,
+		4. send back the response from Lex as the API response.
+	c.	If you did everything correctly, you should be able to leverage the frontend from Assignment 1, with no additional modifications.
 	```
 ## Tricky:
 
