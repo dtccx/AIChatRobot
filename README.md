@@ -39,23 +39,25 @@ design a Dining Concierge chatbot using Amazon Lex
 	a.	Create a new bot using the Amazon Lex service. Documents: https://docs.aws.amazon.com/lex/latest/dg/getting-started.html  
 	b.	Create a Lambda function (LF1), which essentially entails the invocation of Lambda before Lex responds to any of your requests -- this gives the chance to manipulate and validate parameters as well as format the bot’s responses. More documentation: https://docs.aws.amazon.com/lex/latest/dg/using-lambda.html  
 	** validation **  
-		&emsp;●	Location  
-		&emsp;&emsp; Use a USA city Set to valid the location.  
-		&emsp;●	Cuisine  
-		&emsp;&emsp;  Use a Cuisine Set to valid the cuisine.
-		&emsp;●	Dining Time  
-		&emsp;&emsp;  Use regular expression to valid the dining time;
-		```
+		&emsp;●	Location   
+		&emsp;&emsp; Use a USA city Set to valid the location.   
+		&emsp;●	Cuisine    
+		&emsp;&emsp;  Use a Cuisine Set to valid the cuisine.    
+		&emsp;●	Dining Time    
+		&emsp;&emsp;  Use regular expression to valid the dining time;    
+		
+		```  
 		for MM/DD/YY HR:00 format
 		var exp = /^(([0]?[1-9]|1[0-2])\/([0-2]?[0-9]|3[0-1])\/[1-2]\d{3}) (20|21|22|23|[0-1]?\d{1}):([0-5]?\d{1})$/;
-		
 		for 00:00 format
 		var exp = /^(20|21|22|23|[0-1]?\d{1}):([0-5]?\d{1})$/;
-		```
-		&emsp;●	Number of people   
+		```   
+		
+		●	Number of people   
 		&emsp;&emsp;  Just make sure the (int)'number' >= 1;   
-		&emsp;●	Phone number   
-		&emsp;&emsp;  Use regular expression to valid   
+		&emsp;●	Phone number    
+		&emsp;&emsp;  Use regular expression to valid    
+		  
 		```
 		phonenumber begin with + (area code)
 		var exp = /^\+1\d{10}$/;
