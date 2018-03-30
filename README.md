@@ -4,7 +4,7 @@ Work in Cloud Computing Group.
 NYU Tandon school Computer Science Program
 
 
-# website enter:
+# Website enter:(first time dialog is slow, so refresh the web after you log in)
 http://bot-website-bucket.s3-website-us-east-1.amazonaws.com
 
 
@@ -46,22 +46,22 @@ design a Dining Concierge chatbot using Amazon Lex
 		&emsp;●	Dining Time    
 		&emsp;&emsp;  Use regular expression to valid the dining time;    
 		
-		```js
+		
 		for MM/DD/YY HR:00 format
 		var exp = /^(([0]?[1-9]|1[0-2])\/([0-2]?[0-9]|3[0-1])\/[1-2]\d{3}) (20|21|22|23|[0-1]?\d{1}):([0-5]?\d{1})$/;
 		for 00:00 format
 		var exp = /^(20|21|22|23|[0-1]?\d{1}):([0-5]?\d{1})$/;
-		```   
+		
 		
 	&emsp;●	Number of people   
 		&emsp;&emsp;  Just make sure the (int)'number' >= 1;   
 		&emsp;●	Phone number    
 		&emsp;&emsp;  Use regular expression to valid    
 		  
-		```
+		
 		phonenumber begin with + (area code)
 		var exp = /^\+1\d{10}$/;
-		```
+		
 	c.	Bot Requirements:  
 		&emsp;i.	Implement at least the following three intents:  
 		&emsp; ●	GreetingIntent  
