@@ -8,7 +8,7 @@ NYU Tandon school Computer Science Program
 http://bot-website-bucket.s3-website-us-east-1.amazonaws.com
 
 
-## First one step project:
+## First step
 design simple dialog and front-end web:
 with simple lambda function
 
@@ -37,8 +37,7 @@ design a Dining Concierge chatbot using Amazon Lex
 ### design a Dining Concierge chatbot using Amazon Lex. 
 1.	Build a Dining Concierge chatbot using Amazon Lex.  
 	a.	Create a new bot using the Amazon Lex service. Documents: https://docs.aws.amazon.com/lex/latest/dg/getting-started.html  
-	b.	Create a Lambda function (LF1), which essentially entails the invocation of Lambda before Lex responds to any of your requests -- this gives the chance to manipulate and validate parameters as well as format the bot’s responses. More documentation: https://docs.aws.amazon.com/lex/latest/dg/using-lambda.html  
-	** validation **  
+	b.	Create a Lambda function (LF1), which essentially entails the invocation of Lambda before Lex responds to requests -- this gives the chance to manipulate and validate parameters as well as format the bot’s responses. More documentation: https://docs.aws.amazon.com/lex/latest/dg/using-lambda.html  	**————————————————————validation——————————————————**  
 		&emsp;●	Location   
 		&emsp;&emsp; Use a USA city Set to valid the location.   
 		&emsp;●	Cuisine    
@@ -63,27 +62,27 @@ design a Dining Concierge chatbot using Amazon Lex
 		var exp = /^\+1\d{10}$/;
 		
 	c.	Bot Requirements:  
-		&emsp;i.	Implement at least the following three intents:  
+		&emsp;i.	Implement the following three intents:  
 		&emsp; ●	GreetingIntent  
 		&emsp; ●	ThankYouIntent  
 		&emsp; ●	DiningSuggestionsIntent  
-		&emsp;ii.The implementation of an intent entails its setup in Amazon Lex as well as handling its response in the Lambda function code hook.  
-		&emsp;iii.	For the DiningSuggestionsIntent, you need to collect information from the user: 
+		&emsp;ii. The implementation of an intent entails its setup in Amazon Lex as well as handling its response in the Lambda function code hook.  
+		&emsp;iii.	For DiningSuggestionsIntent, collect information from the user
 2.	Build a suggestions module, that is decoupled from the Lex chatbot.  
-	a.	During the fulfillment step (https://docs.aws.amazon.com/lex/latest/dg/API_FulfillmentActivity.html) of the DiningSuggestionsIntent, push the information collected from the user (location, cuisine, etc.) to an SQS queue. More on SQS queues here: https://aws.amazon.com/sqs/  
+	a.	During the fulfillment step https://docs.aws.amazon.com/lex/latest/dg/API_FulfillmentActivity.html of the DiningSuggestionsIntent, push the information collected from the user (location, cuisine, etc.) to an SQS queue. More on SQS queues here: https://aws.amazon.com/sqs/  
 	b.	Create a new Lambda function (LF2) that acts as a queue worker. Whenever it is invoked it   
-		1. pulls a message from the SQS queue,  
-		2. gets restaurant suggestions based on its parameters using one or more APIs such as Yelp or Google Places,   
-		3. formats them      
-		4. sends them over text message to the phone number included in the SQS message, using SNS (https://docs.aws.amazon.com/sns/latest/dg/SMSMessages.html).  
+		&emsp;1. pulls a message from the SQS queue,  
+		&emsp;2. gets restaurant suggestions based on its parameters using one or more APIs such as Yelp or Google Places,   
+		&emsp;3. formats them      
+		&emsp;4. sends them over text message to the phone number included in the SQS message, using SNS (https://docs.aws.amazon.com/sns/latest/dg/SMSMessages.html).  
 	c.	Set up a CloudWatch event trigger that runs every minute and invokes the Lambda function as a result: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html. This automates the queue worker Lambda to poll and process suggestion requests on its own.  
 3.	Integrate the Lex chatbot into your chat API from Assignment 1.  
 	a.	Use the AWS SDK to call Lex chatbot from the Lambda function in 1st Step.
 	b.	When the API receives a request, you should   
-		1. extract the text message from the API request,  
-		2. send it to your Lex chatbot,   
-		3. wait for the response,  
-		4. send back the response from Lex as the API response.  
+		&emsp;1. extract the text message from the API request,  
+		&emsp;2. send it to your Lex chatbot,   
+		&emsp;3. wait for the response,  
+		&emsp;4. send back the response from Lex as the API response.  
 	c.	If you did everything correctly, you should be able to leverage the frontend from Step1, with no additional modifications.  
 	
 ### Tricky:
@@ -98,6 +97,13 @@ How to get to know slot[city] is current one?
 
 **Method:(Hope improved ones)**  
 Every time user put in any value, I validate all values users have already put.
+
+2. Bug: when input is 11:00, lex will not recognize the time
+
+**Method**
+See from the documents "This time is ambiguous. It means either 10:00 AM or 10:00 PM. In this case, the value in the slots map is null"    
+
+*Use regular expression to let user add "AM/PM"*  
 	
 	
 ### Pictures of the Step2 result:
