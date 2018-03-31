@@ -98,7 +98,7 @@ design a Dining Concierge chatbot using Amazon Lex
 
 2. Bug: when input is 11:00, lex will not recognize the time
 
-	**Method**
+	**Method**    
 	See from the documents "This time is ambiguous. It means either 10:00 AM or 10:00 PM. In this case, the value in the slots map is null"    
 
 	*Use regular expression to let user add "AM/PM"*  
