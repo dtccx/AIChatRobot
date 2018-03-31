@@ -88,22 +88,20 @@ design a Dining Concierge chatbot using Amazon Lex
 ### Tricky:
 
 1. How to validate the slot value:
-It's hard to get the slot name which users are currently texting.
+	It's hard to get the slot name which users are currently texting.    
+	For example:   
+	"where do you live in" " New York"   
+	How to get to know slot[city] is current one?   ***Not fixed perfectly***
 
-For example:  
-"where do you live in" " New York"  
-
-How to get to know slot[city] is current one?  
-
-**Method:(Hope improved ones)**  
-Every time user put in any value, I validate all values users have already put.
+	**Method:(Hope improved ones)**  
+	Every time user put in any value, I validate all values users have already put.
 
 2. Bug: when input is 11:00, lex will not recognize the time
 
-**Method**
-See from the documents "This time is ambiguous. It means either 10:00 AM or 10:00 PM. In this case, the value in the slots map is null"    
+	**Method**
+	See from the documents "This time is ambiguous. It means either 10:00 AM or 10:00 PM. In this case, the value in the slots map is null"    
 
-*Use regular expression to let user add "AM/PM"*  
+	*Use regular expression to let user add "AM/PM"*  
 	
 	
 ### Pictures of the Step2 result:
