@@ -4,7 +4,7 @@ Work in Cloud Computing Group.
 NYU Tandon school Computer Science Program
 
 
-# Website enter:(first time dialog is slow, so refresh the web after you log in)
+# Website enter:(first time is slow, refresh the web after you log in)(Sign up before log in )     
 http://bot-website-bucket.s3-website-us-east-1.amazonaws.com
 
 
@@ -70,20 +70,20 @@ design a Dining Concierge chatbot using Amazon Lex
 		&emsp;iii.	For DiningSuggestionsIntent, collect information from the user
 2.	Build a suggestions module, that is decoupled from the Lex chatbot.  
 	a.	During the fulfillment step https://docs.aws.amazon.com/lex/latest/dg/API_FulfillmentActivity.html of the DiningSuggestionsIntent, push the information collected from the user (location, cuisine, etc.) to an SQS queue. More on SQS queues here: https://aws.amazon.com/sqs/  
-	b.	Create a new Lambda function (LF2) that acts as a queue worker. Whenever it is invoked it   
+	b.	Create a new Lambda function (LF2) that acts as a queue worker. Functions:       
 		&emsp;1. pulls a message from the SQS queue,  
 		&emsp;2. gets restaurant suggestions based on its parameters using one or more APIs such as Yelp or Google Places,   
 		&emsp;3. formats them      
 		&emsp;4. sends them over text message to the phone number included in the SQS message, using SNS (https://docs.aws.amazon.com/sns/latest/dg/SMSMessages.html).  
 	c.	Set up a CloudWatch event trigger that runs every minute and invokes the Lambda function as a result: https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/RunLambdaSchedule.html. This automates the queue worker Lambda to poll and process suggestion requests on its own.  
-3.	Integrate the Lex chatbot into your chat API from Assignment 1.  
+3.	Integrate the Lex chatbot into your chat API from Step 1.  
 	a.	Use the AWS SDK to call Lex chatbot from the Lambda function in 1st Step.
-	b.	When the API receives a request, you should   
+	b.	When the API receives a request, then          
 		&emsp;1. extract the text message from the API request,  
 		&emsp;2. send it to your Lex chatbot,   
 		&emsp;3. wait for the response,  
 		&emsp;4. send back the response from Lex as the API response.  
-	c.	If you did everything correctly, you should be able to leverage the frontend from Step1, with no additional modifications.  
+	c.	leverage the frontend from Step 1, with no additional modifications.  
 	
 ### Tricky:
 
@@ -108,6 +108,10 @@ design a Dining Concierge chatbot using Amazon Lex
 ![](img/image3.png)
 ![](img/image4.png)
 ![](img/image5.png)
+
+
+
+## Step 3:
 
 
 
