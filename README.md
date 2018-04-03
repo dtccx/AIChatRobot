@@ -28,6 +28,37 @@ with simple lambda function
 
 3.when you say something it doesn't understand, it will responsed error;
 
+### sample of core code logic:
+```
+    public BotResponse handleRequest(BotRequest request, Context context) {
+    		List<Message> messages = request.getMessages();
+    		Message m = messages.get(0);
+    		UnstructuredMessage u = m.getUnstructured();
+    		String text = u.getText();
+    		String rText = "Sorry, I do not understand you"; 
+    		context.getLogger().log(text);
+    		switch(text) {
+    		case "hello":case "Hello":case "hi":
+    			rText = "Hi, nice to meet you";
+    			break;
+    		case "what is your name":
+    			rText = "I am nobody";
+    			break;
+    		case "good morning":
+    			rText = "Thanks!";
+    			break;
+    		default:
+    			break;
+    		}
+    		
+    		UnstructuredMessage ru = new UnstructuredMessage().text(rText);
+    		Message rm = new Message().unstructured(ru);
+    		List<Message> rMessages = new ArrayList<Message>();
+    		rMessages.add(rm);
+    		
+        return new BotResponse().messages(rMessages);
+    }
+  ```
 
 ## Second step:
 design a Dining Concierge chatbot using Amazon Lex  
