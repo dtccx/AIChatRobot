@@ -142,7 +142,9 @@ design a Dining Concierge chatbot using Amazon Lex
 
 
 
-## Step 3:
+## Step 3: A restaurant recommendation engine
+### Architecture Diagram
+![](img/image6.png)
 
 
 
