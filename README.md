@@ -147,9 +147,9 @@ design a Dining Concierge chatbot using Amazon Lex
 ![](img/image6.png)
 
 
-###Outline of the steps: 
-For this assignment, you have to complete and/or implement the following tasks:
-1. Use the Yelp API to collect 10,000 random restaurants from Manhattan. 					
+### Outline of the steps: 					
+For this assignment, you have to complete and/or implement the following tasks:							
+1. Use the Yelp API to collect 10,000 random restaurants from Manhattan. 											
 	○ Use the following tools: 						
 		■ Yelp API					
 			■ Get restaurants 			
