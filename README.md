@@ -149,15 +149,17 @@ design a Dining Concierge chatbot using Amazon Lex
 
 ### Outline of the steps: 					
 For this assignment, you have to complete and/or implement the following tasks:							
-1. Use the Yelp API to collect 10,000 random restaurants from Manhattan. 											
-	○ Use the following tools: 						
-		■ Yelp API					
-			■ Get restaurants 			
-		■ DynamoDB (a noSQL database)				
-			■ Name the table “yelp-restaurants” 					
-			■ Store the restaurants you scrape, as unstructured data (one thing you will notice is that some restaurants might have more or less fields than others, which makes DynamoDB ideal for storing this data) 					
-			■ With each item you store, make sure to attach a key to the object named “insertedAtTimestamp” with the value of the time and date of when you inserted the particular record 						
-		■ Note: you can perform this scraping from your computer or from your AWS account -- your pick.			
+1. Use the Yelp API to collect 10,000 random restaurants from Manhattan. 
+
+
+○ Use the following tools: 	＜/br＞							
+		■ Yelp API＜/br＞							
+			■ Get restaurants＜/br＞				
+		■ DynamoDB (a noSQL database)＜/br＞				
+			■ Name the table “yelp-restaurants” ＜/br＞					
+			■ Store the restaurants you scrape, as unstructured data (one thing you will notice is that some restaurants might have more or less fields than others, which makes DynamoDB ideal for storing this data) ＜/br＞					
+			■ With each item you store, make sure to attach a key to the object named “insertedAtTimestamp” with the value of the time and date of when you inserted the particular record 				＜/br＞		
+		■ Note: you can perform this scraping from your computer or from your AWS account -- your pick.			＜/br＞
 		
 		
 2. Pick 100 restaurants that you like from the 10,000 you scraped at Step 1. 
