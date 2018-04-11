@@ -147,4 +147,45 @@ design a Dining Concierge chatbot using Amazon Lex
 ![](img/image6.png)
 
 
+###Outline of the steps: 
+For this assignment, you have to complete and/or implement the following tasks:
+1. Use the Yelp API to collect 10,000 random restaurants from Manhattan. 					
+	○ Use the following tools: 						
+		■ Yelp API					
+			■ Get restaurants 			
+		■ DynamoDB (a noSQL database)				
+			■ Name the table “yelp-restaurants” 					
+			■ Store the restaurants you scrape, as unstructured data (one thing you will notice is that some restaurants might have more or less fields than others, which makes DynamoDB ideal for storing this data) 					
+			■ With each item you store, make sure to attach a key to the object named “insertedAtTimestamp” with the value of the time and date of when you inserted the particular record 						
+		■ Note: you can perform this scraping from your computer or from your AWS account -- your pick.			
+		
+		
+2. Pick 100 restaurants that you like from the 10,000 you scraped at Step 1. 
+	○ For each restaurant that you find, log the following information (ex. store it in a spreadsheet/CSV file) 				
+		■ RestaurantId				
+		■ Cuisine 			
+			■ Ex. “Japanese” 			
+		■ Rating 			
+			■ Ex. 4.3 			
+		■ NumberOfReviews 			
+			■ Ex. 537 			
+		■ Neighborhood 			
+			■ Ex. “Soho” 			
+		■ Recommended (this is binary value: 0/1. Set it to 1 here for restaurants you like and would like to recommend) 				
+			■ 1 (this value is important, it signifies that you would recommend this restaurant)		
+
+
+3. Pick 100 restaurants that you do NOT like from the 10,000 you scraped at Step 1. 
+	○ For each restaurant that you find, log the following information (ex. store it in a spreadsheet) 
+		■ RestaurantId 				
+		■ Cuisine 
+		■ Ex. “Japanese” 
+		■ Rating 
+		■ Ex. 4.3 
+		■ NumberOfReviews 
+		■ Ex. 537 
+		■ Neighborhood 
+		■ Ex. “Soho” 
+		■ Recommended (this is binary value: 0/1. Set it to 0 here for restaurants you don’t like and wouldn’t recommend) 
+		■ 0 (this value is important, it signifies that you would NOT recommend this restaurant)
 
