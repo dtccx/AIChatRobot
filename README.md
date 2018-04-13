@@ -176,9 +176,9 @@ For this assignment, you have to complete and/or implement the following tasks�
 
 3. Pick 100 restaurants that you do NOT like from the 10,000 you scraped at Step 1. 
 	○ For each restaurant that you find, log the following information (ex. store it in a spreadsheet) 
-		■ RestaurantId 				
-		■ Cuisine 
-		■ Ex. “Japanese” 
+		■ RestaurantId  
+		■ Cuisine  
+		■ Ex. “Japanese”  
 		■ Rating 
 		■ Ex. 4.3 
 		■ NumberOfReviews 
@@ -188,12 +188,25 @@ For this assignment, you have to complete and/or implement the following tasks�
 		■ Recommended (this is binary value: 0/1. Set it to 0 here for restaurants you don’t like and wouldn’t recommend) 
 		■ 0 (this value is important, it signifies that you would NOT recommend this restaurant)
 
-4. Compile the data you put together in steps 2 and 3 into a CSV file (FILE_1). ○ Your file should have a format similar to the following: RestaurantId,Cuisine,Rating,NumberOfReviews,Neighborhood,Recomme nded “ABC123”,”Italian”,4.3,534,”Soho”,1 “DEF456”,”French”,3.75,21,”Hell’s Kitchen”,0 … 
+4. Compile the data you put together in steps 2 and 3 into a CSV file (FILE_1).  
+	 ○ Your file should have a format similar to the following:   
+	 RestaurantId,Cuisine,Rating,NumberOfReviews,Neighborhood,Recommended   
+	 “ABC123”,”Italian”,4.3,534,”Soho”,1 “DEF456”,”French”,3.75,21,”Hell’s Kitchen”,0 … 
 
-5. Use Amazon ML to build a restaurant prediction engine ○ Upload the CSV (FILE_1) from step 4 above, as the ground truth of the model. These 200 (100 with recommended column value as 1 and 100 with recommended column value as 0) restaurants will form the initial set of training data for your model. ○ Download and convert the DynamoDB restaurant data (10,000 restaurants’ information - the 200 restaurants that form your training data) into a file (FILE_2) with the same CSV format as the file (FILE_1) from step 4. Make sure to filter out those 200 restaurants as your test/validation set should be different from your training data set. ○ Run the model against FILE_2 and see what restaurants the model predicted for you. You can conceptualise your prediction engine/ML model to be such that it received restaurant information
-(RestaurantId,Cuisine,Rating,NumberOfReviews,Neighborhood) as input features and outputs/predicts ‘recommended’ column’s value. ■ Add more training data to FILE_1 as you see fit until you’re satisfied with the predictions. You can use restaurants from FILE_2, set their ‘recommended’ value (0/1) as you did in steps 2 and 3, to augment your training data. 
-6. Once you are satisfied with the results of your ML prediction engine, request the larger Yelp data set (FILE_3) from the TAs (make a private piazza post to Instructors) and run the model against this data set. You can consider this data to be the one in production on which your model is used in real life scenarios. ○ We will also include a fourth file (FILE_4), that has the same restaurants as in FILE_3, but with the complete set of metadata. ○ Make sure to upload FILE_4 contents to DynamoDB. 
-7. Create an ElasticSearch cluster using the AWS ElasticSearch Service. ○ Create an ElasticSearch index called “predictions” ○ Create an ElasticSearch type under the index “predictions” called “Prediction” ○ Store the prediction results from step 6 in ElasticSearch under the “predictions” index, where each prediction has a “Prediction” data type. This data type will be of composite type stored as JSON in ElasticSearch. https://www.elastic.co/guide/en/elasticsearch/guide/current/mapping.html
-8. Update your Lex chatbot (LF2 restaurant suggestion function) from assignment 2, to query ElasticSearch for recommended restaurants. ○ Use the DynamoDB table “yelp-restaurants” (which you created from FILE_4 ) to fetch more information about restaurants (such as restaurant name, address, etc.), since the restaurant predictions from your model will have only a small subset of fields from each restaurant.
+5. Use Amazon ML to build a restaurant prediction engine  
+	 ○ Upload the CSV (FILE_1) from step 4 above, as the ground truth of the model. These 200 (100 with recommended column value as 1 and 100 with recommended column value as 0) restaurants will form the initial set of training data for your model.  
+	 ○ Download and convert the DynamoDB restaurant data (10,000 restaurants’ information - the 200 restaurants that form your training data) into a file (FILE_2) with the same CSV format as the file (FILE_1) from step 4. Make sure to filter out those 200 restaurants as your test/validation set should be different from your training data set.   
+	 ○ Run the model against FILE_2 and see what restaurants the model predicted for you. You can conceptualise your prediction engine/ML model to be such that it received restaurant information (RestaurantId, Cuisine, Rating, NumberOfReviews, Neighborhood) as input features and outputs/predicts ‘recommended’ column’s value.  
+	  ■ Add more training data to FILE_1 as you see fit until you’re satisfied with the predictions. You can use restaurants from FILE_2, set their ‘recommended’ value (0/1) as you did in steps 2 and 3, to augment your training data. 
+6. Once you are satisfied with the results of your ML prediction engine, request the larger Yelp data set (FILE_3) from the TAs (make a private piazza post to Instructors) and run the model against this data set. You can consider this data to be the one in production on which your model is used in real life scenarios.   
+	○ We will also include a fourth file (FILE_4), that has the same restaurants as in FILE_3, but with the complete set of metadata.   
+	○ Make sure to upload FILE_4 contents to DynamoDB. 
+7. Create an ElasticSearch cluster using the AWS ElasticSearch Service.  
+		○ Create an ElasticSearch index called “predictions”   
+		○ Create an ElasticSearch type under the index “predictions” called “Prediction”   
+		○ Store the prediction results from step 6 in ElasticSearch under the “predictions” index, where each prediction has a “Prediction” data type.   
+		This data type will be of composite type stored as JSON in ElasticSearch. https://www.elastic.co/guide/en/elasticsearch/guide/current/mapping.html
+8. Update your Lex chatbot (LF2 restaurant suggestion function) from assignment 2, to query ElasticSearch for recommended restaurants.   
+		○ Use the DynamoDB table “yelp-restaurants” (which you created from FILE_4 ) to fetch more information about restaurants (such as restaurant name, address, etc.), since the restaurant predictions from your model will have only a small subset of fields from each restaurant.
 
 
